@@ -1,4 +1,7 @@
 import express from 'express';
+import * as util from 'util';
+// import * as classTransformer from 'class-transformer';
+// import 'reflect-metadata';
 
 const app = express();
 
@@ -16,7 +19,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/echo', (req, res) => {
-  res.send(JSON.stringify(req));
+  // res.send(JSON.stringify(req));
+  // const req_jsobj = classTransformer.instanceToPlain(req, {
+  //   enableCircularCheck: true,
+  // });
+  res.send(util.inspect(req));
 });
 
 const router = express.Router();

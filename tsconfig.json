@@ -33,7 +33,8 @@
     //
     "noImplicitAny": true,
     // "allowSyntheticDefaultImports": true // so why my works ... 
-
+    "experimentalDecorators": true,
+    // "emitDecoratorMetadata": true, // <see [ResolveCircularDependenyWhenPlainToClass.spec.ts][ReferenceError: Cannot access 'Photo' before initialization][https://github.com/typestack/class-transformer/issues/1622][https://stackoverflow.com/questions/56870661/angular-7-2-1-es6-class-referenceerror-cannot-access-x-before-initializatio]>
   },
   "include": [
     // ;not_needed; "src",
