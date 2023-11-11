@@ -1,25 +1,31 @@
 pipeline {
+  // agent {
+  //   node {
+  //     label 'jenkinsAgent-jdk17-docker'
+  //   }
+  // }
+
+  // stage('Start Container & run build & test inside') {
+  //   steps {
+  //     script {
+  //       docker.image('node:20.9.0-slim').inside {
+  //         git '…your-sources…'
+  //         sh 'mvn -B clean install'
+  //       }
+  //     }
+  //   }
+  // }
+
+  // Dind is just a huge problem -- Ec2 with Docker > Jenkins_Controller in Container (lv1) > Jenkins_Agent in Container (lv1, sibling) > Nodejs in Container (lv2) > git & build javascript inside the Container (lv2) & build Docker image inisde (lv2.5, triple nested Dind)
+  // the concept (viusal graph) of where the Jenkins Agent & Docker container is not clear -- agent with docker installed ; or spawn a new agent inside the docker ; is this dind or dood 
+  // there is no_knowlres for using this Docker pipeline plugin -- dk the syntax & dk how separate Stage inside that 
+
+  // ... @messy[docker_plugin vs docker_pipeline & dind pb] @pb[npm install hang & permission prolem]
   agent {
-    node {
-      label 'jenkinsAgent-jdk17-docker'
-    }
+    docker { image 'node:20.9.0-slim' args '-u root' }
   }
 
   stages {
-    // stage('Start Container & run build & test inside') {
-    //   steps {
-    //     script {
-    //       docker.image('node:20.9.0-slim').inside {
-    //         git '…your-sources…'
-    //         sh 'mvn -B clean install'
-    //       }
-    //     }
-    //   }
-    // }
-
-    // Dind is just a huge problem -- Ec2 with Docker > Jenkins_Controller in Container (lv1) > Jenkins_Agent in Container (lv1, sibling) > Nodejs in Container (lv2) > git & build javascript inside the Container (lv2) & build Docker image inisde (lv2.5, triple nested Dind)
-    // the concept (viusal graph) of where the Jenkins Agent & Docker container is not clear -- agent with docker installed ; or spawn a new agent inside the docker ; is this dind or dood 
-    // there is no_knowlres for using this Docker pipeline plugin -- dk the syntax & dk how separate Stage inside that 
 
     stage('checkout') {
       steps {
@@ -28,19 +34,20 @@ pipeline {
         sh 'ls'
       }
     }
-    stage('setup env') {
-      steps {
-        sh '''
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-        . ~/.nvm/nvm.sh
-        nvm install 18.12.0
-        pwd
-        ls
-        # npm clean-install
-        npm install
-        '''
-      }
-    }
+    // stage('setup env') {
+    //   steps {
+    //     sh '''
+    //     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+    //     . ~/.nvm/nvm.sh
+    //     # nvm install 20.9.0
+    //     nvm install 18.12.0
+    //     pwd
+    //     ls
+    //     # npm clean-install
+    //     npm install
+    //     '''
+    //   }
+    // }
     stage('build') {
       steps {
         // nodejs('nodejs-v20.9.0') {
