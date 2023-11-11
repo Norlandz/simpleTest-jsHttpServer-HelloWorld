@@ -8,7 +8,7 @@ pipeline {
       label 'jenkinsAgent-jdk17-docker'
       // label 'felipecrs_jenkins_agent_dind_20231111'
       image 'node:20.9.0-slim' 
-      args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
+      args '-u root -v /var/run/docker.sock:/var/run/docker.sock -w /home/jenkins/agent'
     }
   }
 
