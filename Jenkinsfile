@@ -24,6 +24,7 @@ pipeline {
     stage('checkout') {
       steps {
         git branch: 'main', url: 'https://github.com/Norlandz/simpleTest-jsHttpServer-HelloWorld'
+        sh 'ls'
       }
     }
     stage('setup env') {
@@ -32,6 +33,7 @@ pipeline {
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
         . ~/.nvm/nvm.sh
         nvm install 18.12.0
+        ls
         npm clean-install
         '''
       }
