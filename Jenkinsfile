@@ -63,7 +63,7 @@ pipeline {
         // }
         // sh 'npm install'
         sh 'echo zzz'
-        sh 'docker -v'
+        // sh 'docker -v'
       }
     }
     // stage('test') {
