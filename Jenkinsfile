@@ -8,7 +8,8 @@ pipeline {
       label 'jenkinsAgent-jdk17-docker'
       // label 'felipecrs_jenkins_agent_dind_20231111'
       image 'node:20.9.0-slim' 
-      // args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
+      // ;seems causing problem[cuz dk auto has -u 0:0]; args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
+      args '-v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
 
@@ -63,7 +64,7 @@ pipeline {
         // }
         // sh 'npm install'
         sh 'echo zzz'
-        // sh 'docker -v'
+        sh 'docker -v'
       }
     }
     // stage('test') {
