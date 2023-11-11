@@ -22,7 +22,10 @@ pipeline {
 
   // ... @messy[docker_plugin vs docker_pipeline & dind pb] @pb[npm install hang & permission prolem]
   agent {
-    docker { image 'node:20.9.0-slim' args '-u root' }
+    docker { 
+      image 'node:20.9.0-slim' 
+      args '-u root' 
+    }
   }
 
   stages {
