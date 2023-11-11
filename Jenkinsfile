@@ -1,5 +1,9 @@
 pipeline {
-  agent 'docker-agent-alphine'
+  agent {
+    node {
+      label 'docker-agent-alphine'
+    }
+  }
 
   stages {
     // stage('Start Container & run build & test inside') {
