@@ -53,9 +53,9 @@ pipeline {
     //   }
     // }
     stage('build') {
-      options {
-        timeout(time: 1, unit: "MINUTES")
-      }
+      // ;not_working; options {
+      // ;not_working;   timeout(time: 1, unit: "MINUTES")
+      // ;not_working; }
       steps {
         // nodejs('nodejs-v20.9.0') {
         //   // sh 'pnpm install'
