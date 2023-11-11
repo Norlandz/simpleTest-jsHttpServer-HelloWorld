@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'docker-agent-alphine'
+      label 'jenkinsAgent-jdk17-docker'
     }
   }
 
