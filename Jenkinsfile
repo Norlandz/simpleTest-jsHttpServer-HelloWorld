@@ -25,7 +25,7 @@ pipeline {
     docker { 
       label 'jenkinsAgent-jdk17-docker'
       image 'node:20.9.0-slim' 
-      args '-u root -v jenkins_home:/var/jenkins_home'  
+      args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
 
