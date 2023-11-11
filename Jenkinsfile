@@ -26,19 +26,26 @@ pipeline {
         git branch: 'main', url: 'https://github.com/Norlandz/simpleTest-jsHttpServer-HelloWorld'
       }
     }
+    stage('setup env') {
+      steps {
+        sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash'
+        sh '. ~/.nvm/nvm.sh'
+        sh 'nvm install 20.9.0'
+      }
+    }
     stage('build') {
       steps {
-        nodejs('nodejs-v20.9.0') {
-          // sh 'pnpm install'
-          sh 'npm install'
-        }
+        // nodejs('nodejs-v20.9.0') {
+        //   // sh 'pnpm install'
+        //   sh 'npm install'
+        // }
+        sh 'npm install'
       }
     }
     stage('test') {
       steps {
-        nodejs('nodejs-v20.9.0') {
-          sh 'echo "Pretend Testing"'
-        }
+        // nodejs('nodejs-v20.9.0') {
+        sh 'echo "Pretend Testing"'
       }
     }
     stage('build docker image') {
