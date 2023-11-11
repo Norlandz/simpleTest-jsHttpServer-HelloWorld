@@ -20,10 +20,11 @@ pipeline {
   // the concept (viusal graph) of where the Jenkins Agent & Docker container is not clear -- agent with docker installed ; or spawn a new agent inside the docker ; is this dind or dood 
   // there is no_knowlres for using this Docker pipeline plugin -- dk the syntax & dk how separate Stage inside that 
 
-  // ... @messy[docker_plugin vs docker_pipeline & dind pb] @pb[npm install hang & permission prolem] // []@¦  // /home/jenkins/workspace/simpleNodejsPip@tmp/durable-f94e22da/script.sh: 1: docker: not found@¦  // <>@¦  // http://34.230.0.56:8080/job/simpleNodejsPip/20/console@¦  // ~~~// said its dind ... @¦  // []@¦//         args  '-v /tmp:/tmp'@¦// <>@¦// https://www.jenkins.io/doc/book/pipeline/syntax/@¦// ~~~// dk this can be real messy ; (said more pb in one way or another ... @¦// ~~~// & @que,confirmation is not solved ... -- but the guess is just indeed dind @¦// the sep of command (in / out the docker) running said a pb too @¦// dk miss; but if thats clear  ;; guess just logic & better design should [[ brain@¦
+  // ... @messy[docker_plugin vs docker_pipeline & dind pb] @pb[npm install hang & permission prolem] // []@¦  // /home/jenkins/workspace/simpleNodejsPip@tmp/durable-f94e22da/script.sh: 1: docker: not found@¦  // <>@¦  // http://34.230.0.56:8080/job/simpleNodejsPip/20/console@¦  // ~~~// said its dind ... @¦  // []@¦//         args  '-v /tmp:/tmp'@¦// <>@¦// https://www.jenkins.io/doc/book/pipeline/syntax/@¦// ~~~// dk this can be real messy ; (said more pb in one way or another ... @¦// ~~~// & @que,confirmation is not solved ... -- but the guess is just indeed dind @¦// the sep of command (in / out the docker) running said a pb too @¦// dk miss; but if thats clear  ;; guess just logic & better design should [[ brain@¦ // type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock@¦type=bind,source=/usr/bin/docker,destination=/usr/bin/docker@¦~~~// just makes it hang aga; dk other try ; just not working ; // no_knowlres no good way saying how to do ; @¦
   agent {
     docker { 
-      label 'jenkinsAgent-jdk17-docker'
+      // label 'jenkinsAgent-jdk17-docker'
+      label 'felipecrs_jenkins_agent_dind_20231111'
       image 'node:20.9.0-slim' 
       args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
     }
