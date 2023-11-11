@@ -31,13 +31,13 @@ pipeline {
 
   stages {
 
-    stage('checkout') {
-      steps {
-        git branch: 'main', url: 'https://github.com/Norlandz/simpleTest-jsHttpServer-HelloWorld'
-        sh 'pwd'
-        sh 'ls'
-      }
-    }
+    // stage('checkout') {
+    //   steps {
+    //     git branch: 'main', url: 'https://github.com/Norlandz/simpleTest-jsHttpServer-HelloWorld'
+    //     sh 'pwd'
+    //     sh 'ls'
+    //   }
+    // }
     // stage('setup env') {
     //   steps {
     //     sh '''
