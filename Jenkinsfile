@@ -57,7 +57,7 @@ pipeline {
     }
     stage('pull & run docker image in remote server') {
       steps {
-
+        sh 'echo "Pretend xxx"'
       }
     }
 
