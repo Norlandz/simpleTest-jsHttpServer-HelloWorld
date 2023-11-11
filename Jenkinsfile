@@ -31,8 +31,8 @@ pipeline {
         sh '''
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
         . ~/.nvm/nvm.sh
-        nvm install 20.9.0
-        npm install
+        nvm install 18.12.0
+        npm clean-install
         '''
       }
     }
