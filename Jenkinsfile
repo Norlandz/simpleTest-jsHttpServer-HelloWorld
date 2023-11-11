@@ -29,7 +29,8 @@ pipeline {
     stage('build') {
       steps {
         nodejs('nodejs-v20.9.0') {
-          sh 'pnpm install'
+          // sh 'pnpm install'
+          sh 'npm install'
         }
       }
     }
