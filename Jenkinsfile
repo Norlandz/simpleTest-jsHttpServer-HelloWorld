@@ -59,7 +59,7 @@ pipeline {
     stage('test') {
       steps {
         // nodejs('nodejs-v20.9.0') {
-        sh 'echo "Pretend Testing"'
+        sh 'echo "pseudo Testing"'
       }
     }
     stage('build docker image') {
@@ -79,7 +79,7 @@ pipeline {
     }
     stage('pull & run docker image in remote server') {
       steps {
-        sh 'echo "Pretend xxx"'
+        sh 'echo "pseudo xxx"'
       }
     }
 
