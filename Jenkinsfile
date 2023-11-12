@@ -34,7 +34,7 @@ pipeline {
       steps {
         git branch: 'main', url: 'https://github.com/Norlandz/simpleTest-jsHttpServer-HelloWorld'
         sh 'pwd'
-        sh 'ls'
+        sh 'ls -la'
       }
     }
     stage('setup env') {
