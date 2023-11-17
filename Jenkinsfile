@@ -45,7 +45,10 @@ pipeline {
         // nvm install 18.12.0
         // npm install
         // '''
+        sh 'node --version'
+        sh 'npm --version'
         sh 'npm install -g pnpm@8.10.2'
+        sh 'pnpm --version'
       }
     }
     stage('build') {
@@ -64,7 +67,7 @@ pipeline {
     }
     stage('build docker image') {
       steps {
-        sh 'docker build -t mindde/simpletest-jshttpserver-helloworld:0.0.1 .'
+        sh 'docker build -t mindde/simpletest-jshttpserver-helloworld:v0.0.1 .'
       }
     }
     stage('publish docker image') {
@@ -73,7 +76,7 @@ pipeline {
       }
       steps {
         sh 'docker login -u $CredDockerhub_USR -p $CredDockerhub_PSW'
-        sh 'docker push mindde/simpletest-jshttpserver-helloworld:0.0.1'
+        sh 'docker push mindde/simpletest-jshttpserver-helloworld:v0.0.1'
         sh 'docker logout'
       }
     }
